@@ -1,1 +1,42 @@
-<h1>Hello World!! Sujal here....</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Journal</title>
+</head>
+<body>
+  <h1>My Learning Journal</h1>
+  <p>Today's Date: <span id="currentDate"></span></p>
+  
+  <!-- Input field for user to enter their learning content -->
+  <textarea id="learningContent" rows="5" cols="50" placeholder="Write your learning content here..."></textarea>
+  <br>
+  <button onclick="saveContent()">Save Content</button>
+
+  <!-- Display area for saved learning content -->
+  <div id="savedContent"></div>
+
+  <script>
+    // Function to display the current date
+    function displayCurrentDate() {
+      var currentDate = new Date();
+      var options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+      document.getElementById('currentDate').textContent = currentDate.toLocaleDateString('en-US', options);
+    }
+
+    // Function to save content entered by the user
+    function saveContent() {
+      var content = document.getElementById('learningContent').value;
+      var currentDate = new Date();
+      var options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+      var formattedDate = currentDate.toLocaleDateString('en-US', options);
+      var savedContentElement = document.getElementById('savedContent');
+      savedContentElement.innerHTML += '<p><strong>' + formattedDate + ':</strong> ' + content + '</p>';
+    }
+
+    // Call the function to display the current date when the page loads
+    window.onload = displayCurrentDate;
+  </script>
+</body>
+</html>
