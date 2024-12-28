@@ -4,19 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Presentation</title>
+  <style>
+    /* Ensure the iframe covers most of the screen */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+
+    iframe {
+      width: 100%;
+      height: 95vh; /* Takes up 95% of the viewport height */
+      border: none; /* Remove border for clean look */
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #0078d4;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    a:hover {
+      background-color: #005a9e;
+    }
+  </style>
 </head>
 <body>
   <h1>Presentation</h1>
   
   <!-- Embedded PowerPoint Presentation -->
   <iframe 
-    src="https://1drv.ms/p/s!ApKQu-Cag8TYggDPVEW6dZoKiv1D?embed=1&amp;em=2&amp;wdAr=1.7777777777777777" 
-    width="100%" 
-    height="90vh" 
-    frameborder="0">
+    src="https://1drv.ms/p/s!ApKQu-Cag8TYggDPVEW6dZoKiv1D?embed=1&amp;em=2&amp;wdAr=1.7777777777777777">
       This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.
   </iframe>
 
-  <p><a href="index.html">Back to Main Page</a></p>
+  <!-- Back link -->
+  <a href="index.html">Back to Main Page</a>
 </body>
 </html>
