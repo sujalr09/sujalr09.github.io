@@ -24,8 +24,8 @@
     }
 
     function success(position) {
-      const lat = position.coords.latitude.toFixed(6);
-      const lon = position.coords.longitude.toFixed(6);
+      const lat = position.coords.latitude.toFixed(7);
+      const lon = position.coords.longitude.toFixed(7);
 
       // ✅ YOUR Google Form prefill URL with placeholders replaced
        const formURL = "https://docs.google.com/forms/d/e/1FAIpQLScVMxTWTgLyTqw8hdBlCp_sgSRq27shc0-6rrhSVBIZd6Onlg/viewform?usp=pp_url&entry.988112384=" + lat + "&entry.1934476700=" + lon;
