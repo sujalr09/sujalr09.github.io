@@ -1,50 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
+  <title>Location Collector Form Redirect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learning Journal</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 12px 24px; font-size: 18px; background: #4CAF50; color: white; border: none; border-radius: 5px; }
+    button:hover { background: #45a049; }
+  </style>
 </head>
 <body>
-  <h1>My Learning Journal</h1>
-  <p>Today's Date: <span id="currentDate"></span></p>
-  
-  <!-- Input field for user to enter their learning content -->
-  <textarea id="learningContent" rows="5" cols="50" placeholder="Write your learning content here..."></textarea>
-  <br>
-  <button onclick="saveContent()">Save Content</button>
-
-  <!-- Display area for saved learning content -->
-  <div id="savedContent"></div>
-
-  <!-- Button to view the embedded presentation -->
-  <button onclick="viewPresentation()">View Presentation</button>
+  <h2>📍 Share Your Location</h2>
+  <p>Click the button to get your current location and go to the form.</p>
+  <button onclick="getLocation()">Get Location & Go to Form</button>
 
   <script>
-    // Function to display the current date
-    function displayCurrentDate() {
-      var currentDate = new Date();
-      var options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
-      document.getElementById('currentDate').textContent = currentDate.toLocaleDateString('en-US', options);
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true});
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
     }
 
-    // Function to save content entered by the user
-    function saveContent() {
-      var content = document.getElementById('learningContent').value;
-      var currentDate = new Date();
-      var options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
-      var formattedDate = currentDate.toLocaleDateString('en-US', options);
-      var savedContentElement = document.getElementById('savedContent');
-      savedContentElement.innerHTML += '<p><strong>' + formattedDate + ':</strong> ' + content + '</p>';
+    function success(position) {
+      const lat = position.coords.latitude.toFixed(6);
+      const lon = position.coords.longitude.toFixed(6);
+
+      // ✅ YOUR Google Form prefill URL with placeholders replaced
+      const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSdC60SXz2OSZHPSaxOXG8QbmEJAmiBcGmNFWSzkkr9gn3e1-A/viewform?usp=pp_url&entry.1067048042=" + lat + "&entry.1237302297=" + lon;
+
+      window.location.href = formURL;
     }
 
-    // Redirect to the presentation page
-    function viewPresentation() {
-      window.location.href = "presentation.html";
+    function error() {
+      alert("❗ Unable to get your location. Please check browser or location settings and try again.");
     }
-
-    // Call the function to display the current date when the page loads
-    window.onload = displayCurrentDate;
   </script>
 </body>
 </html>
